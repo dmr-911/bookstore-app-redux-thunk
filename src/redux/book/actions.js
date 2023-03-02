@@ -1,6 +1,7 @@
 import {
   ADD_BOOK,
   DELETE_BOOK,
+  FILTER_BOOK_DATA,
   LOAD_BOOKS,
   UPDATE_BOOK,
   UPDATE_BOOK_DATA,
@@ -26,13 +27,10 @@ export const deleteBook = (bookId) => {
   };
 };
 
-export const updateBook = (bookId, newUpdatedBook) => {
+export const updateBook = (newUpdatedBook) => {
   return {
     type: UPDATE_BOOK,
-    payload: {
-      id: bookId,
-      updatedBook: newUpdatedBook,
-    },
+    payload: newUpdatedBook,
   };
 };
 
@@ -42,3 +40,4 @@ export const updateBookData = (bookData) => {
     payload: bookData,
   };
 };
+

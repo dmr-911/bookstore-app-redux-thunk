@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import addApiBook from "../redux/book/thunk/addApiBook";
+import updateApiBook from "../redux/book/thunk/updateApiBook";
+import { loadFormData } from "../redux/formData/actions";
 
 const initialBookData = {
   name: "",
@@ -13,13 +15,29 @@ const initialBookData = {
 
 const AddUpdateBook = () => {
   const form = useSelector((state) => state.form);
-  const [bookData, setBookData] = useState(form);
+  const [bookData, setBookData] = useState(initialBookData);
   const dispatch = useDispatch();
 
   const handleBookSubmit = async (e) => {
     e.preventDefault();
     // dispatch thunk function
     dispatch(addApiBook(bookData));
+
+    // dispatch
+    dispatch(loadFormData());
+
+    // set initial state
+    setBookData(initialBookData);
+  };
+
+  // patch book handler
+  const updateBookHandler = (e) => {
+    e.preventDefault();
+
+    dispatch(updateApiBook(bookData));
+
+    // dispatch;
+    dispatch(loadFormData());
 
     // set initial state
     setBookData(initialBookData);
@@ -33,7 +51,10 @@ const AddUpdateBook = () => {
   return (
     <div className="p-4 overflow-hidden bg-white shadow-cardShadow rounded-md">
       <h4 className="mb-8 text-xl font-bold text-center">Add New Book</h4>
-      <form className="book-form" onSubmit={handleBookSubmit}>
+      <form
+        className="book-form"
+        onSubmit={bookData?.id ? updateBookHandler : handleBookSubmit}
+      >
         <div className="space-y-2">
           <label htmlFor="name">Book Name</label>
           <input

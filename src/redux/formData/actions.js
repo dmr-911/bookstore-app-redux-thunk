@@ -10,6 +10,5 @@ export const updateFormData = (book) => {
 export const loadFormData = () => {
   return {
     type: LOAD_FORM_DATA,
-    payload: [],
   };
 };

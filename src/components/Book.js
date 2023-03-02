@@ -16,7 +16,6 @@ const Book = ({ book }) => {
 
   // edit book
   const handleEditBook = () => {
-    console.log(book);
     dispatch(updateFormData(book));
   };
 

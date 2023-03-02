@@ -7,7 +7,7 @@ const formReducer = (state = initialState, action) => {
       return action.payload;
 
     case LOAD_FORM_DATA:
-      return action.payload;
+      return [];
 
     default:
       return state;

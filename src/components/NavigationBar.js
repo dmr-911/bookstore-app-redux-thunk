@@ -1,6 +1,14 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { searchProduct } from "../redux/search/actions";
 
 const NavigationBar = () => {
+  const dispatch = useDispatch();
+  const searchHandler = (e) => {
+    if (e.target.value && e.target.value !== " ") {
+      dispatch(searchProduct(e.target.value));
+    }
+  };
   return (
     <nav className="py-4 2xl:px-6">
       <div className="container flex items-center justify-between">
@@ -34,6 +42,7 @@ const NavigationBar = () => {
               placeholder="Filter books..."
               className="search"
               id="lws-searchBook"
+              onChange={searchHandler}
             />
           </div>
         </form>
