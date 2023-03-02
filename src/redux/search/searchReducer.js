@@ -3,6 +3,7 @@ import {
   LOAD_DEFAULT_BOOKS,
   REMOVE_SEARCH_PRODUCTS,
   SEARCH_PRODUCT,
+  SEARCH_TEXT,
 } from "./actionTypes";
 import initialState from "./initialState";
 
@@ -26,6 +27,11 @@ const searchReducer = (state = initialState, action) => {
         searchedBooks: [],
       };
 
+    case SEARCH_TEXT:
+      return {
+        ...state,
+        searchText: action.payload,
+      };
     case SEARCH_PRODUCT:
       return {
         ...state,

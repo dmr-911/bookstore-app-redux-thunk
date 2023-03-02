@@ -3,6 +3,7 @@ import {
   LOAD_DEFAULT_BOOKS,
   REMOVE_SEARCH_PRODUCTS,
   SEARCH_PRODUCT,
+  SEARCH_TEXT,
 } from "./actionTypes";
 
 export const loadDefaultBooks = (books) => {
@@ -28,6 +29,13 @@ export const removeAllSearchedProducts = () => {
 export const searchProduct = (searchText) => {
   return {
     type: SEARCH_PRODUCT,
+    payload: searchText,
+  };
+};
+
+export const searchText = (searchText) => {
+  return {
+    type: SEARCH_TEXT,
     payload: searchText,
   };
 };

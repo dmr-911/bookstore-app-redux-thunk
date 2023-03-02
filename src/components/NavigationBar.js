@@ -1,13 +1,13 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { searchProduct } from "../redux/search/actions";
+import { searchProduct, searchText } from "../redux/search/actions";
 
 const NavigationBar = () => {
   const dispatch = useDispatch();
-  const searchHandler = (e) => {
-    if (e.target.value && e.target.value !== " ") {
-      dispatch(searchProduct(e.target.value));
-    }
+  const searchHandler = async (e) => {
+    dispatch(searchProduct(e.target.value));
+
+    dispatch(searchText(e.target.value));
   };
   return (
     <nav className="py-4 2xl:px-6">

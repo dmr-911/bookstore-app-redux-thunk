@@ -19,15 +19,19 @@ const Books = () => {
 
   return (
     <div className="lws-bookContainer">
-      {/* {books.map((book) => (
-        <Book key={book?.id} book={book} />
-      ))} */}
-
-      {search?.searchedBooks?.length
-        ? search?.searchedBooks?.map((book) => (
+      {search?.searchedBooks?.length || search?.searchText ? (
+        search?.searchedBooks?.length ? (
+          search?.searchedBooks?.map((book) => (
             <Book key={book.id} book={book} />
           ))
-        : books.map((book) => <Book key={book.id} book={book} />)}
+        ) : (
+          <p>
+            No <b>Books</b> found
+          </p>
+        )
+      ) : (
+        books.map((book) => <Book key={book.id} book={book} />)
+      )}
     </div>
   );
 };
