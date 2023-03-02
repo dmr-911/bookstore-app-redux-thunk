@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import addApiBook from "../redux/book/thunk/addApiBook";
 
 const initialBookData = {
@@ -8,11 +8,12 @@ const initialBookData = {
   thumbnail: "",
   price: "",
   rating: "",
-  featured: true,
+  featured: false,
 };
 
 const AddUpdateBook = () => {
-  const [bookData, setBookData] = useState(initialBookData);
+  const form = useSelector((state) => state.form);
+  const [bookData, setBookData] = useState(form);
   const dispatch = useDispatch();
 
   const handleBookSubmit = async (e) => {
@@ -23,6 +24,12 @@ const AddUpdateBook = () => {
     // set initial state
     setBookData(initialBookData);
   };
+
+  // effect for form
+  useEffect(() => {
+    setBookData(form);
+  }, [form]);
+
   return (
     <div className="p-4 overflow-hidden bg-white shadow-cardShadow rounded-md">
       <h4 className="mb-8 text-xl font-bold text-center">Add New Book</h4>
@@ -117,9 +124,15 @@ const AddUpdateBook = () => {
             This is a featured book{" "}
           </label>
         </div>
-        <button type="submit" className="submit" id="submit">
-          Add Book
-        </button>
+        {!bookData?.name ? (
+          <button type="submit" className="submit" id="submit">
+            Add Book
+          </button>
+        ) : (
+          <button type="submit" className="submit" id="submit">
+            Update Book
+          </button>
+        )}
       </form>
     </div>
   );

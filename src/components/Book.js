@@ -1,15 +1,23 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import deleteApiBook from "../redux/book/thunk/deleteBook";
+import { updateFormData } from "../redux/formData/actions";
 import Star from "./Star";
 
 const Book = ({ book }) => {
   const { id, name, author, thumbnail, price, rating, featured } = book;
   const dispatch = useDispatch();
+  const formBook = useSelector((state) => state.form);
 
   const handleProductDelete = async (bookId) => {
     dispatch(deleteApiBook(bookId));
+  };
+
+  // edit book
+  const handleEditBook = () => {
+    console.log(book);
+    dispatch(updateFormData(book));
   };
 
   return (
@@ -26,8 +34,12 @@ const Book = ({ book }) => {
           >
             featured
           </span>
-          <div className="text-gray-500 space-x-2">
-            <button className="lws-edit">
+          <div className="text-gray-500 space-x-2" onClick={handleEditBook}>
+            <button
+              className={`
+              ${formBook?.id !== id ? "lws-edit" : "edit-button-active"} 
+            `}
+            >
               <svg
                 fill="none"
                 viewBox="0 0 24 24"
