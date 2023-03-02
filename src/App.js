@@ -4,7 +4,6 @@ import AddUpdateBook from "./components/AddUpdateBook";
 import NavigationBar from "./components/NavigationBar";
 import Filters from "./components/Filters";
 import Books from "./components/Books";
-import { useSelector } from "react-redux";
 
 function App() {
   return (

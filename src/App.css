@@ -599,6 +599,10 @@ body {
   }
 }
 
+.invisible{
+  visibility: hidden;
+}
+
 .filter-btn {
   border-radius: 9999px;
   border-width: 1px;

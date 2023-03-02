@@ -13,7 +13,7 @@ const Books = () => {
   return (
     <div className="lws-bookContainer">
       {books.map((book) => (
-        <Book key={book?.id} />
+        <Book key={book?.id} book={book} />
       ))}
     </div>
   );
