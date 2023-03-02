@@ -8,9 +8,8 @@ const deleteApiBook = (bookId) => {
         "Content-type": "application/json, charset=utf-8",
       },
     });
-    console.log(response);
 
-    // dispatch(deleteBook(bookId));
+    dispatch(deleteBook(bookId));
   };
 };
 

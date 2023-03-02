@@ -26,6 +26,15 @@
       "rating": 4,
       "featured": true,
       "id": 4
+    },
+    {
+      "name": "The age of augustus",
+      "author": "Augustus",
+      "thumbnail": "https://allthatsinteresting.com/wordpress/wp-content/uploads/2019/11/age-of-augustus-cover.png",
+      "price": "165",
+      "rating": "4",
+      "featured": true,
+      "id": 5
     }
   ]
 }

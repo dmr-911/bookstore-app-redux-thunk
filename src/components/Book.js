@@ -8,9 +8,10 @@ const Book = ({ book }) => {
   const { id, name, author, thumbnail, price, rating, featured } = book;
   const dispatch = useDispatch();
 
-  const handleProductDelete = (bookId) => {
+  const handleProductDelete = async (bookId) => {
     dispatch(deleteApiBook(bookId));
   };
+
   return (
     <div className="book-card">
       <img
@@ -66,7 +67,7 @@ const Book = ({ book }) => {
           <p className="lws-author">{author}</p>
           <div className="lws-stars">
             {/* stars */}
-            {[...new Array(rating)].map((star) => (
+            {[...new Array(parseFloat(rating))].map((star) => (
               <Star key={uuidv4(star)} />
             ))}
           </div>
