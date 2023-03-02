@@ -1,9 +1,16 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
+import deleteApiBook from "../redux/book/thunk/deleteBook";
 import Star from "./Star";
 
 const Book = ({ book }) => {
   const { id, name, author, thumbnail, price, rating, featured } = book;
+  const dispatch = useDispatch();
+
+  const handleProductDelete = (bookId) => {
+    dispatch(deleteApiBook(bookId));
+  };
   return (
     <div className="book-card">
       <img
@@ -34,7 +41,10 @@ const Book = ({ book }) => {
                 />
               </svg>
             </button>
-            <button className="lws-delete">
+            <button
+              className="lws-delete"
+              onClick={() => handleProductDelete(id)}
+            >
               <svg
                 fill="none"
                 viewBox="0 0 24 24"
