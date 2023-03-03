@@ -9,6 +9,7 @@ const Filters = () => {
   const [active, setActive] = useState(false);
   const dispatch = useDispatch();
   const books = useSelector((state) => state.books);
+  const search = useSelector((state) => state.search);
 
   // featured handler
   const handleFeatured = () => {
@@ -23,6 +24,13 @@ const Filters = () => {
       dispatch(removeAllSearchedProducts());
     }
   }, [active, dispatch, books]);
+
+  // effect for featured or searched
+  useEffect(() => {
+    if (search?.searchText) {
+      setActive(false);
+    }
+  }, [search?.searchText]);
 
   return (
     <div className="flex items-center justify-between mb-12">

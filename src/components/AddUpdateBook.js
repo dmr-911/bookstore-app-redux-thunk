@@ -15,6 +15,7 @@ const initialBookData = {
 
 const AddUpdateBook = () => {
   const form = useSelector((state) => state.form);
+  const search = useSelector((state) => state.search);
   const [bookData, setBookData] = useState(initialBookData);
   const dispatch = useDispatch();
 
@@ -47,6 +48,11 @@ const AddUpdateBook = () => {
   useEffect(() => {
     setBookData(form);
   }, [form]);
+
+  // effect for search and featured
+  useEffect(() => {
+    setBookData(initialBookData);
+  }, [search?.text, search?.searchedBooks]);
 
   return (
     <div className="p-4 overflow-hidden bg-white shadow-cardShadow rounded-md">
