@@ -52,7 +52,12 @@ const AddUpdateBook = () => {
   // effect for search and featured
   useEffect(() => {
     setBookData(initialBookData);
-  }, [search?.text, search?.searchedBooks]);
+  }, [search?.text]);
+
+  // useEffect(() => {
+  //   // dispatch;
+  //   dispatch(loadFormData());
+  // }, [search?.text, search?.searchedBooks, dispatch]);
 
   return (
     <div className="p-4 overflow-hidden bg-white shadow-cardShadow rounded-md">
@@ -141,9 +146,9 @@ const AddUpdateBook = () => {
             type="checkbox"
             name="featured"
             className="w-4 h-4"
-            value={bookData.featured}
+            checked={bookData.featured}
             onChange={(e) =>
-              setBookData((prev) => ({ ...prev, featured: !bookData.featured }))
+              setBookData((prev) => ({ ...prev, featured: e.target.checked }))
             }
           />
           <label htmlFor="featured" className="ml-2 text-sm">
