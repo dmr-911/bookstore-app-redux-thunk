@@ -54,14 +54,11 @@ const AddUpdateBook = () => {
     setBookData(initialBookData);
   }, [search?.text]);
 
-  // useEffect(() => {
-  //   // dispatch;
-  //   dispatch(loadFormData());
-  // }, [search?.text, search?.searchedBooks, dispatch]);
-
   return (
     <div className="p-4 overflow-hidden bg-white shadow-cardShadow rounded-md">
-      <h4 className="mb-8 text-xl font-bold text-center">Add New Book</h4>
+      <h4 className="mb-8 text-xl font-bold text-center">
+        {!bookData?.name ? "Add New Book" : "Update Book"}
+      </h4>
       <form
         className="book-form"
         onSubmit={bookData?.id ? updateBookHandler : handleBookSubmit}
